@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/logout" style="float:right">Logout</a>
+    <h1>Welcome, {{user.alias}}!</h1>
+    <p>{{pokedUsers.count}} people poked you!</p>
+    <hr>
+      {%for user in pokedUsers%}
+      <p>{{user.give}} poked you {{user.count}} number of times!</p>
+      {%endfor%}
+    <hr>
+    <h3>People you may want to poke:</h3>
+    <table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Alias</th>
+    <th>Email</th>
+    <th>Poke History</th>
+    <th>Action</th>
+  </tr>
+  {%for other in otherusers%}
+    <tr>
+      <td>{{other.id}}  |  {{other.name}}</td>
+      <td>{{other.alias}}</td>
+      <td>{{other.email}}</td>
+      <td>{{other.gotPoke.count}}</td>
+      <td><button type="button"><a href="/pokes/addPoke/{{other.id}}" style="text-decoration:none;">Poke!</a></button></td>
+    </tr>
+  {%endfor%}
+  </body>
+</html>
